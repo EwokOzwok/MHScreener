@@ -95,7 +95,7 @@ app_ui <- function(request) {
                 intensity = 5,
                 hover = TRUE,
                 f7Card(
-                  f7Align(h2("Part 1 of 2"), side=c("center")),
+                  f7Align(h2("Part 2 of 2"), side=c("center")),
                   h3("INSTRUCTIONS:"),
                   h4("GAD7 INSTRUCTIONS HERE!"),
                   uiOutput("GAD7"),
@@ -107,13 +107,30 @@ app_ui <- function(request) {
           ),
 
 
+          f7Tab(
+            tabName = "DoneTab",
+            icon = f7Icon("house_fill"),
+            active = F,
 
+            f7Shadow(
+              intensity = 5,
+              hover = TRUE,
+              f7Card(
+                title = "",
+                h2("Enter Navigator ID and Password"),
+                f7Text(NavUsername, label = "Navigator ID: ", value=NULL, placeholder = "Enter Navigator ID number"),
+                f7Password(NavPassword, label = "Password : ", value = "", placeholder = NULL),
+                f7Button("Login", "Login"),
+                hairlines = F, strong = T, inset =
+                  F, tablet = FALSE)
+            )
+          ),
 
 
 
 
           f7Tab(
-            tabName = "AppTab1",
+            tabName = "Output_tab",
             icon = f7Icon("house_fill"),
             active = F,
 

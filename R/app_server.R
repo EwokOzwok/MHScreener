@@ -71,7 +71,7 @@ app_server <- function(input, output, session) {
       ScreenerData$PHQ7<-input$PHQitem7
       ScreenerData$PHQ8<-input$PHQitem8
       ScreenerData$PHQ9<-input$PHQitem9
-      ScreenerData[] <- factor(unlist(ScreenerData), levels = c("Not at all","A little bit","Moderately","Quite a bit","Extremely"), labels = c(1, 2, 3,4,5))
+      ScreenerData[,1:9] <- factor(unlist(ScreenerData), levels = c("Not at all","A little bit","Moderately","Quite a bit","Extremely"), labels = c(1, 2, 3,4,5))
       ScreenerData<-lapply(ScreenerData,as.numeric)
       ScreenerData<-as.data.frame(ScreenerData)
       ScreenerData$Total_PHQ9<-ScreenerData$PHQ1+ScreenerData$PHQ2+ScreenerData$PHQ3+ScreenerData$PHQ4+ScreenerData$PHQ5+ScreenerData$PHQ6+ScreenerData$PHQ7+ScreenerData$PHQ8+ScreenerData$PHQ9
@@ -82,6 +82,51 @@ app_server <- function(input, output, session) {
 
   })
 
+
+
+
+  observeEvent(input$GAD7Submit, {
+
+    if(input$GADitem1=="Choose a response" ||
+       input$GADitem2=="Choose a response" ||
+       input$GADitem3=="Choose a response" ||
+       input$GADitem4=="Choose a response" ||
+       input$GADitem5=="Choose a response" ||
+       input$GADitem6=="Choose a response" ||
+       input$GADitem7=="Choose a response")
+    {
+      shinyalert::shinyalert(title="Oops, you forgot to answer a question!",type="error")
+    } else {
+      rm(ScreenerData)
+      ScreenerData<-data.frame(matrix(NA, nrow=1,ncol = 16))
+      colnames(ScreenerData)<-c("PHQ1","PHQ2","PHQ3","PHQ4","PHQ5","PHQ6","PHQ7","PHQ8","PHQ9","GAD1","GAD2","GAD3","GAD4","GAD5","GAD6","GAD7")
+
+      ScreenerData$GAD1<-input$GADitem1
+      ScreenerData$GAD2<-input$GADitem2
+      ScreenerData$GAD3<-input$GADitem3
+      ScreenerData$GAD4<-input$GADitem4
+      ScreenerData$GAD5<-input$GADitem5
+      ScreenerData$GAD6<-input$GADitem6
+      ScreenerData$GAD7<-input$GADitem7
+      ScreenerData[,10:16] <- factor(unlist(ScreenerData), levels = c("Not at all","A little bit","Moderately","Quite a bit","Extremely"), labels = c(1, 2, 3, 4, 5))
+      ScreenerData<-lapply(ScreenerData,as.numeric)
+      ScreenerData<-as.data.frame(ScreenerData)
+      ScreenerData$Total_GAD7<-ScreenerData$GAD1+ScreenerData$GAD2+ScreenerData$GAD3+ScreenerData$GAD4+ScreenerData$GAD5+ScreenerData$GAD6+ScreenerData$GAD7
+      print(ScreenerData)
+      updateF7Tabs(session = session, id = "tabs", selected = "DoneTab")
+
+    }
+
+  })
+
+
+observeEvent(input$Login,{
+  if(input$NavPassword == "access"){
+  updateF7Tabs(session = session, id = "tabs", selected = "Output_tab")
+  } else {
+    shinyalert::shinyalert(title="Wrong Password!",type="error")
+  }
+})
 
 
 
@@ -187,6 +232,61 @@ app_server <- function(input, output, session) {
   })
 
 
+
+  output$PHQ9<-renderUI({
+    tagList(
+      f7Card(
+        h4("GAD Item 1"),
+        f7Select("GADitem1", NULL , choices = c("Choose a response", "Not at all","A little bit","Moderately","Quite a bit","Extremely"), selected = NULL),
+        footer = NULL,
+        hairlines = F, strong = T, inset = F, tablet = FALSE),
+
+
+      f7Card(
+        h4("GAD Item 2"),
+        f7Select("GADitem2", NULL , choices = c("Choose a response", "Not at all","A little bit","Moderately","Quite a bit","Extremely"), selected = NULL),
+        footer = NULL,
+        hairlines = F, strong = T, inset = F, tablet = FALSE),
+
+
+      f7Card(
+        h4("GAD Item 3"),
+        f7Select("GADitem3", NULL , choices = c("Choose a response", "Not at all","A little bit","Moderately","Quite a bit","Extremely"), selected = NULL),
+        footer = NULL,
+        hairlines = F, strong = T, inset = F, tablet = FALSE),
+
+
+      f7Card(
+        h4("GAD Item 4"),
+        f7Select("GADitem4", NULL , choices = c("Choose a response", "Not at all","A little bit","Moderately","Quite a bit","Extremely"), selected = NULL),
+        footer = NULL,
+        hairlines = F, strong = T, inset = F, tablet = FALSE),
+
+
+      f7Card(
+        h4("GAD Item 5"),
+        f7Select("GADitem5", NULL , choices = c("Choose a response", "Not at all","A little bit","Moderately","Quite a bit","Extremely"), selected = NULL),
+        footer = NULL,
+        hairlines = F, strong = T, inset = F, tablet = FALSE),
+
+
+      f7Card(
+        h4("GAD Item 6"),
+        f7Select("GADitem6", NULL , choices = c("Choose a response", "Not at all","A little bit","Moderately","Quite a bit","Extremely"), selected = NULL),
+        footer = NULL,
+        hairlines = F, strong = T, inset = F, tablet = FALSE),
+
+
+      f7Card(
+        h4("GAD Item 7"),
+        f7Select("GADitem7", NULL , choices = c("Choose a response", "Not at all","A little bit","Moderately","Quite a bit","Extremely"), selected = NULL),
+        footer = NULL,
+        hairlines = F, strong = T, inset = F, tablet = FALSE),
+
+
+      f7Button("GAD7Submit", "Finish")
+    )
+  })
 
 
 }
