@@ -13,13 +13,13 @@ app_ui <- function(request) {
     # Your application UI logic
 
     shinyMobile::f7Page(
-      title = "Project ACCESS Mental Health Screener",
+      title = "Mental Health Screener",
       options = list(theme=c("auto"), dark=TRUE, preloader = F,  pullToRefresh=F),
       allowPWA=TRUE,
       f7TabLayout(
         # panels are not mandatory. These are similar to sidebars
         navbar = f7Navbar(
-          title= "Mental Health Screener"),
+          title= "Project ACCESS Mental Health Screener"),
         # f7Tabs is a special toolbar with included navigation
         f7Tabs(
           animated = TRUE,
