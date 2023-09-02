@@ -9,6 +9,7 @@
 #' @import shinyjs
 #' @noRd
 app_server <- function(input, output, session) {
+
   # Your application server logic
   PHQ9Data<-data.frame(matrix(NA, nrow=1,ncol = 9))
   colnames(PHQ9Data)<-c("PHQ1","PHQ2","PHQ3","PHQ4","PHQ5","PHQ6","PHQ7","PHQ8","PHQ9")
@@ -17,8 +18,27 @@ app_server <- function(input, output, session) {
 
 
   observeEvent(input$Screenerprompt, {
+    output$PHQ9Questions<-renderUI({
+      tagList(
+        f7Block(
+          f7Shadow(
+            intensity = 5,
+            hover = TRUE,
+            f7Card(
+              f7Align(h2("Part 1 of 2"), side=c("center")),
+              h3("INSTRUCTIONS:"),
+              h4("Over the last 2 weeks, how often have you been bothered by any of the following problems?"),
+              uiOutput("PHQ9"),
+              footer = NULL,
+              hairlines = F, strong = T, inset = F, tablet = FALSE)
+          )
+        )
+      )
+    })
     updateF7Tabs(session = session, id = "tabs", selected = "PHQ9tab")
   })
+
+
 
 
   observeEvent(input$StartOver, {
@@ -44,6 +64,9 @@ app_server <- function(input, output, session) {
     output$PHQ9summary<- renderUI({})
     output$GAD7summary<- renderUI({})
     updateF7Text("NavUsername", label = "Navigator ID: ", value="Enter Navigator ID number")
+    output$PHQ9Questions<-renderUI({})
+    output$GAD7Questions<- renderUI({})
+    output$IDPASSWORD<- renderUI({})
   })
 
 
@@ -53,6 +76,24 @@ app_server <- function(input, output, session) {
 
 
   observeEvent(input$PHQ9Submit, {
+    output$GAD7Questions<- renderUI({
+      tagList(
+      f7Block(
+        f7Shadow(
+          intensity = 5,
+          hover = TRUE,
+          f7Card(
+            f7Align(h2("Part 2 of 2"), side=c("center")),
+            h3("INSTRUCTIONS:"),
+            h4("Over the last two weeks, how often have you been bothered by the following problems?"),
+            uiOutput("GAD7"),
+            footer = NULL,
+            hairlines = F, strong = T, inset = F, tablet = FALSE)
+          )
+        )
+      )
+    })
+
     if(input$PHQitem1=="Choose a response" ||
        input$PHQitem2=="Choose a response" ||
        input$PHQitem3=="Choose a response" ||
@@ -174,6 +215,30 @@ app_server <- function(input, output, session) {
 
 
   observeEvent(input$GAD7Submit, {
+
+    output$IDPASSWORD<- renderUI({
+      tagList(
+        f7AccordionItem(
+          title="Enter Navigator ID and Password",
+          f7Card(
+            br(),
+            f7Text("NavUsername", label = "Navigator ID: ", value=NULL, placeholder = "Enter Navigator ID number"),
+            br(),
+            br(),
+            br(),
+            f7Password("NavPassword", label = "Password : ", value = NULL, placeholder = "Enter Password"),
+            br(),
+            br(),
+            br(),
+            f7Button("Login", "Login", rounded = T, shadow=T, fill = T),
+            hairlines = F, strong = T, inset =
+              F, tablet = FALSE))
+
+      )
+    })
+
+
+
     if(input$GADitem1=="Choose a response" ||
        input$GADitem2=="Choose a response" ||
        input$GADitem3=="Choose a response" ||
@@ -275,8 +340,8 @@ output$DONE<- renderUI({
       hover = TRUE,
       f7Card(
         title = "",
-        f7Align(h2("Your Mental Health Screener has been successfully completed"), side=c("center")),
-        f7Align(h3("Please hand the tablet back to the Navigator"), side=c("center")),
+        f7Align(h1("Thank you for completing the Project ACCESS Mental Health Screener"), side=c("center")),
+        f7Align(h2("Please hand the tablet back to the Navigator"), side=c("center")),
         hairlines = F, strong = T, inset =
           F, tablet = FALSE))
 

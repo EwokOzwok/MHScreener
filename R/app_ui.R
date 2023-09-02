@@ -50,20 +50,7 @@ app_ui <- function(request) {
             icon = NULL,
             active = F,
             hidden=T,
-            f7Block(
-              f7Shadow(
-                intensity = 5,
-                hover = TRUE,
-                f7Card(
-                  f7Align(h2("Part 1 of 2"), side=c("center")),
-                  h3("INSTRUCTIONS:"),
-                  h4("Over the last 2 weeks, how often have you been bothered by any of the following problems?"),
-                  uiOutput("PHQ9"),
-                  footer = NULL,
-                  hairlines = F, strong = T, inset = F, tablet = FALSE)
-              )
-            )
-
+            uiOutput("PHQ9Questions")
           ),
 
 
@@ -72,21 +59,8 @@ app_ui <- function(request) {
             icon = NULL,
             active = F,
             hidden=T,
-            f7Block(
-              f7Shadow(
-                intensity = 5,
-                hover = TRUE,
-                f7Card(
-                  f7Align(h2("Part 2 of 2"), side=c("center")),
-                  h3("INSTRUCTIONS:"),
-                  h4("Over the last two weeks, how often have you been bothered by the following problems?"),
-                  uiOutput("GAD7"),
-                  footer = NULL,
-                  hairlines = F, strong = T, inset = F, tablet = FALSE)
-              )
-            )
-
-          ),
+            uiOutput("GAD7Questions")
+            ),
 
 
           f7Tab(
@@ -102,21 +76,8 @@ app_ui <- function(request) {
               hover = TRUE,
               f7Card(
               f7Accordion(
-                          f7AccordionItem(
-                            title="Enter Navigator ID and Password",
-                            f7Card(
-                              br(),
-                              f7Text("NavUsername", label = "Navigator ID: ", value=NULL, placeholder = "Enter Navigator ID number"),
-                              br(),
-                              br(),
-                              br(),
-                              f7Password("NavPassword", label = "Password : ", value = NULL, placeholder = "Enter Password"),
-                              br(),
-                              br(),
-                              br(),
-                              f7Button("Login", "Login", rounded = T, shadow=T, fill = T),
-                              hairlines = F, strong = T, inset =
-                                F, tablet = FALSE)))
+                uiOutput("IDPASSWORD")
+              )
             ))
           ),
 
@@ -134,8 +95,10 @@ app_ui <- function(request) {
               intensity = 5,
               hover = TRUE,
               f7Card(
-                title = "",
-                f7Button("StartOver", "Start Over"),
+                f7Accordion(
+                  f7AccordionItem(title="Start Over",
+                                  f7Button("StartOver", "Start Over"))),
+
                 hairlines = F, strong = T, inset =
                   F, tablet = FALSE)
             )
