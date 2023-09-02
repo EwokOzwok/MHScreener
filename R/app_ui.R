@@ -138,8 +138,8 @@ golem_add_external_resources <- function() {
 
   tags$head(
 
-    includeCSS("www/framework7.bundle.min.css")
-    # favicon(),
+    includeCSS("www/framework7.bundle.min.css"),
+    favicon()
     # bundle_resources(
     #   path = app_sys("app/www"),
     #   app_title = "MHScreener"
