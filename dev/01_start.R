@@ -53,10 +53,10 @@ usethis::use_git()
 ## Create a template for tests
 # golem::use_recommended_tests()
 golem::use_internal_css_file(
-  "./www/framework7.bundle.min.css",
-  "framework7.bundle.min.css",
+  "C:/Users/intra/OneDrive/Desktop/MHScreener/www/11framework7.bundle.min.css",
+  name = "newcss",
   pkg = golem::get_golem_wd(),
-  dir = "/www",
+  dir = "C:/Users/intra/OneDrive/Desktop/MHScreener/www",
   open = FALSE,
   dir_create = F
 )## Favicon ----
