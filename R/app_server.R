@@ -6,6 +6,7 @@
 #' @import shinyMobile
 #' @import dplyr
 #' @import shinyalert
+#' @import shinyjs
 #' @noRd
 app_server <- function(input, output, session) {
   # Your application server logic
@@ -14,9 +15,6 @@ app_server <- function(input, output, session) {
   GAD7data<-data.frame(matrix(NA, nrow=1,ncol = 7))
   colnames(GAD7data)<-c("GAD1","GAD2","GAD3","GAD4","GAD5","GAD6","GAD7")
 
-  observeEvent(input$Start, {
-    updateF7Tabs(session = session, id = "tabs", selected = "GettingStartedTab")
-  })
 
   observeEvent(input$Screenerprompt, {
     updateF7Tabs(session = session, id = "tabs", selected = "PHQ9tab")
@@ -55,7 +53,6 @@ app_server <- function(input, output, session) {
 
 
   observeEvent(input$PHQ9Submit, {
-
     if(input$PHQitem1=="Choose a response" ||
        input$PHQitem2=="Choose a response" ||
        input$PHQitem3=="Choose a response" ||
@@ -68,7 +65,6 @@ app_server <- function(input, output, session) {
     {
       shinyalert::shinyalert(title="Oops, you forgot to answer a question!",type="error")
     } else {
-      rm(PHQ9Data)
       PHQ9Data<-data.frame(matrix(NA, nrow=1,ncol = 9))
       colnames(PHQ9Data)<-c("PHQ1","PHQ2","PHQ3","PHQ4","PHQ5","PHQ6","PHQ7","PHQ8","PHQ9")
 
@@ -149,8 +145,8 @@ app_server <- function(input, output, session) {
 
       output$PHQ9summary<- renderUI({
         tagList(
-          f7Card(
-            f7Align(h3(paste("Depression Severity: ", Severity)), side=c("left")),
+          f7Card(title = f7Align(h2("Depression", side=c("center"))),
+            f7Align(h3(paste("Severity: ", Severity)), side=c("left")),
             hr(),
             f7Align(h3(paste("Suicidality: ", SuicideAlert)), side=c("left")),
             hr(),
@@ -178,7 +174,6 @@ app_server <- function(input, output, session) {
 
 
   observeEvent(input$GAD7Submit, {
-
     if(input$GADitem1=="Choose a response" ||
        input$GADitem2=="Choose a response" ||
        input$GADitem3=="Choose a response" ||
@@ -244,8 +239,8 @@ app_server <- function(input, output, session) {
 
       output$GAD7summary<- renderUI({
         tagList(
-            f7Card(
-            f7Align(h3(paste("Anxiety Severity: ", ANXSeverity)), side=c("left")),
+            f7Card(title = f7Align(h2("Anxiety", side=c("center"))),
+            f7Align(h3(paste("Severity: ", ANXSeverity)), side=c("left")),
             hr(),
             f7Align(h3(paste("Total GAD7 score: ",c(GAD7data$Total_GAD7))), side=c("left")),
             hr(),
@@ -315,14 +310,6 @@ observeEvent(input$Login,{
 
 
 
-
-
-
-  output$StartButton<-renderUI({
-    tagList(
-      f7Button("Start", "Get Started!")
-    )
-  })
 
   output$PHQ9<-renderUI({
     tagList(

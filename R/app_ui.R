@@ -23,7 +23,6 @@ app_ui <- function(request) {
         # f7Tabs is a special toolbar with included navigation
         f7Tabs(
           animated = TRUE,
-          style=c("toolbar"),
           id = "tabs",
           f7Tab(
             tabName = "WelcomeTab",
@@ -36,31 +35,13 @@ app_ui <- function(request) {
                 hover = TRUE,
                 f7Card(
                   f7Align(h2("Welcome to the Project ACCESS Mental Health Screener"),side=c("center")),
-                  uiOutput("StartButton"),
+                  br(),
+                    f7Align(h2("To start the screener click the button below"),side=c("center")),
+                    f7Button("Screenerprompt", "Start!"),
                   footer = NULL,
                   hairlines = F, strong = T, inset = F, tablet = FALSE)
               )
             )
-          ),
-
-
-          f7Tab(
-            tabName = "GettingStartedTab",
-            icon = NULL,
-            active = F,
-            hidden=T,
-            f7Block(
-              f7Shadow(
-                intensity = 5,
-                hover = TRUE,
-                f7Card(
-                  f7Align(h2("To start the screener click the button below"),side=c("center")),
-                  f7Button("Screenerprompt", "Start!"),
-                  footer = NULL,
-                  hairlines = F, strong = T, inset = F, tablet = FALSE)
-              )
-            )
-
           ),
 
 
@@ -193,6 +174,7 @@ golem_add_external_resources <- function() {
   # )
 
   tags$head(
+
     includeCSS("www/framework7.bundle.min.css")
     # favicon(),
     # bundle_resources(
