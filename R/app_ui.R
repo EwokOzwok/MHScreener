@@ -96,7 +96,7 @@ app_ui <- function(request) {
               hover = TRUE,
               f7Card(
                 f7Accordion(
-                  f7AccordionItem(title="Start Over",
+                  f7AccordionItem(title="Start Over", open=F,
                                   f7Button("StartOver", "Start Over"))),
 
                 hairlines = F, strong = T, inset =
