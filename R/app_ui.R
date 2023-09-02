@@ -146,8 +146,8 @@ golem_add_external_resources <- function() {
     # bundle_resources(
     #   path = app_sys("./www"),
     #   app_title = "MHScreener"),
-
-    includeCSS("C:/Users/intra/OneDrive/Desktop/MHScreener/www/newcss.css"),
+    # includeCSS("./www/newcss.css"),
+    HTML('<link rel="stylesheet" type="text/css" href="https://ewokozwok.github.io/MHScreener/www/framework7.bundle.min.css">')
 
 
 
