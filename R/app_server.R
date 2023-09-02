@@ -150,16 +150,12 @@ app_server <- function(input, output, session) {
       output$PHQ9summary<- renderUI({
         tagList(
           f7Card(
-            f7Align(h2("Depression Severity"), side=c("center")),
-            f7Align(h3(Severity), side=c("center")),
+            f7Align(h2(paste("Depression Severity:  ", Severity)), side=c("left")),
             hr(),
-            f7Align(h2("Suicidality"), side=c("center")),
-            f7Align(h3(SuicideAlert), side=c("center")),
+            f7Align(h2(paste("Suicidality:  ", SuicideAlert)), side=c("left")),
             hr(),
-            f7Align(h2("Total PHQ9 score"), side=c("left")),
-            f7Align(h3(c(PHQ9Data$Total_PHQ9)), side=c("left")),
+            f7Align(h2(paste("Total PHQ9 score:  ", c(PHQ9Data$Total_PHQ9))), side=c("left")),
             hr(),
-
             f7Align(h2(DepressionFlagText), side=c("left")),
             h3(Dflag1),
             h3(Dflag2),
@@ -249,11 +245,9 @@ app_server <- function(input, output, session) {
       output$GAD7summary<- renderUI({
         tagList(
             f7Card(
-            f7Align(h2("Anxiety Severity"), side=c("center")),
-            f7Align(h3(ANXSeverity), side=c("center")),
+            f7Align(h2(paste("Anxiety Severity:  ", ANXSeverity)), side=c("left")),
             hr(),
-            f7Align(h2("Total GAD7 score"), side=c("left")),
-            f7Align(h3(c(GAD7data$Total_GAD7)), side=c("left")),
+            f7Align(h2(paste("Total GAD7 score:  ",c(GAD7data$Total_GAD7))), side=c("left")),
             hr(),
             f7Align(h2(AnxietyFlagText), side=c("left")),
             h3(Aflag1),
