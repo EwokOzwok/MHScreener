@@ -23,6 +23,7 @@ app_ui <- function(request) {
         # f7Tabs is a special toolbar with included navigation
         f7Tabs(
           animated = TRUE,
+          style=c("toolbar"),
           id = "tabs",
           f7Tab(
             tabName = "WelcomeTab",
@@ -45,7 +46,7 @@ app_ui <- function(request) {
 
           f7Tab(
             tabName = "GettingStartedTab",
-            icon = f7Icon("house_fill"),
+            icon = NULL,
             active = F,
             hidden=T,
             f7Block(
@@ -65,7 +66,7 @@ app_ui <- function(request) {
 
           f7Tab(
             tabName = "PHQ9tab",
-            icon = f7Icon("search"),
+            icon = NULL,
             active = F,
             hidden=T,
             f7Block(
@@ -75,7 +76,7 @@ app_ui <- function(request) {
                 f7Card(
                   f7Align(h2("Part 1 of 2"), side=c("center")),
                   h3("INSTRUCTIONS:"),
-                  h4("PHQ9 INSTRUCTIONS HERE!"),
+                  h4("Over the last 2 weeks, how often have you been bothered by any of the following problems?"),
                   uiOutput("PHQ9"),
                   footer = NULL,
                   hairlines = F, strong = T, inset = F, tablet = FALSE)
@@ -87,7 +88,7 @@ app_ui <- function(request) {
 
           f7Tab(
             tabName = "GAD7tab",
-            icon = f7Icon("search"),
+            icon = NULL,
             active = F,
             hidden=T,
             f7Block(
@@ -97,7 +98,7 @@ app_ui <- function(request) {
                 f7Card(
                   f7Align(h2("Part 2 of 2"), side=c("center")),
                   h3("INSTRUCTIONS:"),
-                  h4("GAD7 INSTRUCTIONS HERE!"),
+                  h4("Over the last two weeks, how often have you been bothered by the following problems?"),
                   uiOutput("GAD7"),
                   footer = NULL,
                   hairlines = F, strong = T, inset = F, tablet = FALSE)
@@ -109,21 +110,33 @@ app_ui <- function(request) {
 
           f7Tab(
             tabName = "DoneTab",
-            icon = f7Icon("house_fill"),
+            icon = NULL,
             active = F,
+            hidden=T,
+
+            uiOutput("DONE"),
 
             f7Shadow(
               intensity = 5,
               hover = TRUE,
               f7Card(
-                title = "",
-                h2("Enter Navigator ID and Password"),
-                f7Text(NavUsername, label = "Navigator ID: ", value=NULL, placeholder = "Enter Navigator ID number"),
-                f7Password(NavPassword, label = "Password : ", value = "", placeholder = NULL),
-                f7Button("Login", "Login"),
-                hairlines = F, strong = T, inset =
-                  F, tablet = FALSE)
-            )
+              f7Accordion(
+                          f7AccordionItem(
+                            title="Enter Navigator ID and Password",
+                            f7Card(
+                              br(),
+                              f7Text("NavUsername", label = "Navigator ID: ", value=NULL, placeholder = "Enter Navigator ID number"),
+                              br(),
+                              br(),
+                              br(),
+                              f7Password("NavPassword", label = "Password : ", value = NULL, placeholder = "Enter Password"),
+                              br(),
+                              br(),
+                              br(),
+                              f7Button("Login", "Login", rounded = T, shadow=T, fill = T),
+                              hairlines = F, strong = T, inset =
+                                F, tablet = FALSE)))
+            ))
           ),
 
 
@@ -134,7 +147,8 @@ app_ui <- function(request) {
             icon = f7Icon("house_fill"),
             active = F,
 
-            uiOutput("datasummaryIntro"),
+            uiOutput("PHQ9summary"),
+            uiOutput("GAD7summary"),
             f7Shadow(
               intensity = 5,
               hover = TRUE,
