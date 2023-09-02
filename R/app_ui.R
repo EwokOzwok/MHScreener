@@ -135,7 +135,7 @@ golem_add_external_resources <- function() {
   #   "www",
   #   app_sys("./www"),
   # )
-  addResourcePath("css", "./www/framework7.bundle.min.css")
+  addResourcePath("www", "www/framework7.bundle.min.css")
   tags$head(
 
 
@@ -147,7 +147,7 @@ golem_add_external_resources <- function() {
     #   path = app_sys("./www"),
     #   app_title = "MHScreener"),
 
-    includeCSS("./www/framework7.bundle.min.css")
+    includeCSS("www/framework7.bundle.min.css")
     # Add here other external resources
     # for example, you can add shinyalert::useShinyalert()
   )
