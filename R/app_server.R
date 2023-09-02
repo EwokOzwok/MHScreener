@@ -100,7 +100,7 @@ app_server <- function(input, output, session) {
       if(PHQ9Data$PHQ9==3){
         SuicideAlert<-c("Suicidal ideation for NEARLY EVERY DAY in the past 2 weeks!")
       }
-
+#
       if(PHQ9Data$Total_PHQ9 < 5){
         Severity<-c("Minimal Depression")
       }
