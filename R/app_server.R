@@ -45,7 +45,7 @@ app_server <- function(input, output, session) {
     updateF7Select(inputId="GADitem7", selected = c("Choose a response"))
     output$PHQ9summary<- renderUI({})
     output$GAD7summary<- renderUI({})
-    updateF7Text("NavUsername", label = "Navigator ID: ", value=NULL, placeholder = "Enter Navigator ID number")
+    updateF7Text("NavUsername", label = "Navigator ID: ", value="Enter Navigator ID number")
   })
 
 
@@ -142,24 +142,25 @@ app_server <- function(input, output, session) {
         Dflag8<-c("Moving or speaking so slowly that other people could have noticed. Or the opposite    being so figety or restless that you have been moving around a lot more than usual")
       } else{Dflag8<-NULL}
 
-      if(Dflag1 = NULL && Dflag2 = NULL && Dflag3 = NULL && Dflag4 = NULL && Dflag5 = NULL && Dflag6 = NULL && Dflag7 = NULL && Dflag8 = NULL){
-        DepressionFlagText<-c("No Depression items were flagged")
+      if(is.null(Dflag1) == T && is.null(Dflag2) == T && is.null(Dflag3) == T && is.null(Dflag4) == T && is.null(Dflag5) == T && is.null(Dflag6) == T && is.null(Dflag7) == T && is.null(Dflag8) == T){
+        DepressionFlagText<-c("No depression items were flagged")
       } else {DepressionFlagText<-c("Flagged Depression Items")}
 
 
       output$PHQ9summary<- renderUI({
         tagList(
           f7Card(
-            f7Align(h2("Suicidality"), side=c("center")),
-            f7Align(h3(SuicideAlert), side=c("center")),
-            hr(),
-            f7Align(h2("Total PHQ9 score"), side=c("center")),
-            f7Align(h3(c(PHQ9Data$Total_PHQ9)), side=c("center")),
-            hr(),
             f7Align(h2("Depression Severity"), side=c("center")),
             f7Align(h3(Severity), side=c("center")),
             hr(),
-            f7Align(h2(DepressionFlagText), side=c("center")),
+            f7Align(h2("Suicidality"), side=c("center")),
+            f7Align(h3(SuicideAlert), side=c("center")),
+            hr(),
+            f7Align(h2("Total PHQ9 score"), side=c("left")),
+            f7Align(h3(c(PHQ9Data$Total_PHQ9)), side=c("left")),
+            hr(),
+
+            f7Align(h2(DepressionFlagText), side=c("left")),
             h3(Dflag1),
             h3(Dflag2),
             h3(Dflag3),
@@ -241,20 +242,20 @@ app_server <- function(input, output, session) {
         Aflag7<-c("Feeling afraid, as if something awful might happen")
       } else {Aflag7<-NULL}
 
-      if (Aflag1 = NULL && Aflag2 = NULL && Aflag3 = NULL && Aflag4 = NULL && Aflag5 = NULL && Aflag6 = NULL && Aflag7 = NULL){
+      if (is.null(Aflag1) == T && is.null(Aflag2) == T && is.null(Aflag3) == T && is.null(Aflag4) == T && is.null(Aflag5) == T && is.null(Aflag6) == T && is.null(Aflag7) == T){
         AnxietyFlagText<-c("No anxiety items were flagged")
       } else {AnxietyFlagText<-c("Flagged Anxiety Items")}
 
       output$GAD7summary<- renderUI({
         tagList(
             f7Card(
-            f7Align(h2("Total GAD7 score"), side=c("center")),
-            f7Align(h3(c(GAD7data$Total_GAD7)), side=c("center")),
-            hr(),
             f7Align(h2("Anxiety Severity"), side=c("center")),
             f7Align(h3(ANXSeverity), side=c("center")),
             hr(),
-            f7Align(h2(AnxietyFlagText), side=c("center")),
+            f7Align(h2("Total GAD7 score"), side=c("left")),
+            f7Align(h3(c(GAD7data$Total_GAD7)), side=c("left")),
+            hr(),
+            f7Align(h2(AnxietyFlagText), side=c("left")),
             h3(Aflag1),
             h3(Aflag2),
             h3(Aflag3),
