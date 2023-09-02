@@ -142,19 +142,24 @@ app_server <- function(input, output, session) {
         Dflag8<-c("Moving or speaking so slowly that other people could have noticed. Or the opposite    being so figety or restless that you have been moving around a lot more than usual")
       } else{Dflag8<-NULL}
 
+      if(Dflag1 = NULL && Dflag2 = NULL && Dflag3 = NULL && Dflag4 = NULL && Dflag5 = NULL && Dflag6 = NULL && Dflag7 = NULL && Dflag8 = NULL){
+        DepressionFlagText<-c("No Depression items were flagged")
+      } else {DepressionFlagText<-c("Flagged Depression Items")}
+
+
       output$PHQ9summary<- renderUI({
         tagList(
           f7Card(
-            f7Align(h1("Suicidality"), side=c("center")),
-            f7Align(h2(SuicideAlert), side=c("center")),
+            f7Align(h2("Suicidality"), side=c("center")),
+            f7Align(h3(SuicideAlert), side=c("center")),
             hr(),
             f7Align(h2("Total PHQ9 score"), side=c("center")),
             f7Align(h3(c(PHQ9Data$Total_PHQ9)), side=c("center")),
             hr(),
-            f7Align(h1("Depression Severity"), side=c("center")),
-            f7Align(h2(Severity), side=c("center")),
+            f7Align(h2("Depression Severity"), side=c("center")),
+            f7Align(h3(Severity), side=c("center")),
             hr(),
-            f7Align(h1("Flagged Items"), side=c("center")),
+            f7Align(h2(DepressionFlagText), side=c("center")),
             h3(Dflag1),
             h3(Dflag2),
             h3(Dflag3),
@@ -163,6 +168,7 @@ app_server <- function(input, output, session) {
             h3(Dflag6),
             h3(Dflag7),
             h3(Dflag8),
+            hr(),
             footer = NULL,
             hairlines = F, strong = T, inset = F, tablet = FALSE)
         )
@@ -235,16 +241,20 @@ app_server <- function(input, output, session) {
         Aflag7<-c("Feeling afraid, as if something awful might happen")
       } else {Aflag7<-NULL}
 
+      if (Aflag1 = NULL && Aflag2 = NULL && Aflag3 = NULL && Aflag4 = NULL && Aflag5 = NULL && Aflag6 = NULL && Aflag7 = NULL){
+        AnxietyFlagText<-c("No anxiety items were flagged")
+      } else {AnxietyFlagText<-c("Flagged Anxiety Items")}
+
       output$GAD7summary<- renderUI({
         tagList(
             f7Card(
             f7Align(h2("Total GAD7 score"), side=c("center")),
             f7Align(h3(c(GAD7data$Total_GAD7)), side=c("center")),
             hr(),
-            f7Align(h1("Anxiety Severity"), side=c("center")),
-            f7Align(h2(ANXSeverity), side=c("center")),
+            f7Align(h2("Anxiety Severity"), side=c("center")),
+            f7Align(h3(ANXSeverity), side=c("center")),
             hr(),
-            f7Align(h1("Flagged Items"), side=c("center")),
+            f7Align(h2(AnxietyFlagText), side=c("center")),
             h3(Aflag1),
             h3(Aflag2),
             h3(Aflag3),
@@ -252,6 +262,7 @@ app_server <- function(input, output, session) {
             h3(Aflag5),
             h3(Aflag6),
             h3(Aflag7),
+            hr(),
             footer = NULL,
             hairlines = F, strong = T, inset = F, tablet = FALSE)
         )
@@ -307,8 +318,7 @@ observeEvent(input$Login,{
       })
 
 
-      print(PHQ9Data$Total_PHQ9)
-      print(GAD7data$Total_GAD7)
+
 
 
 
@@ -326,63 +336,63 @@ observeEvent(input$Login,{
         f7Select("PHQitem1", NULL , choices = c("Choose a response", "Not at all","Several Days","More than half the days","Nearly every day"), selected = NULL),
         footer = NULL,
         hairlines = F, strong = T, inset = F, tablet = FALSE),
-
+        hr(),
 
       f7Card(
         h4("Feeling down, depressed, or hopeless"),
         f7Select("PHQitem2", NULL , choices = c("Choose a response", "Not at all","Several Days","More than half the days","Nearly every day"), selected = NULL),
         footer = NULL,
         hairlines = F, strong = T, inset = F, tablet = FALSE),
-
+        hr(),
 
       f7Card(
         h4("Trouble falling or staying asleep, or sleeping too much"),
         f7Select("PHQitem3", NULL , choices = c("Choose a response", "Not at all","Several Days","More than half the days","Nearly every day"), selected = NULL),
         footer = NULL,
         hairlines = F, strong = T, inset = F, tablet = FALSE),
-
+        hr(),
 
       f7Card(
         h4("Feeling tired or having little energy"),
         f7Select("PHQitem4", NULL , choices = c("Choose a response", "Not at all","Several Days","More than half the days","Nearly every day"), selected = NULL),
         footer = NULL,
         hairlines = F, strong = T, inset = F, tablet = FALSE),
-
+        hr(),
 
       f7Card(
         h4("Poor appetite or overeating"),
         f7Select("PHQitem5", NULL , choices = c("Choose a response", "Not at all","Several Days","More than half the days","Nearly every day"), selected = NULL),
         footer = NULL,
         hairlines = F, strong = T, inset = F, tablet = FALSE),
-
+        hr(),
 
       f7Card(
         h4("Feeling bad about yourself   or that you are a failure or have let yourself or your family down"),
         f7Select("PHQitem6", NULL , choices = c("Choose a response", "Not at all","Several Days","More than half the days","Nearly every day"), selected = NULL),
         footer = NULL,
         hairlines = F, strong = T, inset = F, tablet = FALSE),
-
+        hr(),
 
       f7Card(
         h4("Trouble concentrating on things, such as reading the newspaper or watching television"),
         f7Select("PHQitem7", NULL , choices = c("Choose a response", "Not at all","Several Days","More than half the days","Nearly every day"), selected = NULL),
         footer = NULL,
         hairlines = F, strong = T, inset = F, tablet = FALSE),
-
+        hr(),
 
       f7Card(
         h4("Moving or speaking so slowly that other people could have noticed. Or the opposite    being so figety or restless that you have been moving around a lot more than usual"),
         f7Select("PHQitem8", NULL , choices = c("Choose a response", "Not at all","Several Days","More than half the days","Nearly every day"), selected = NULL),
         footer = NULL,
         hairlines = F, strong = T, inset = F, tablet = FALSE),
-
+        hr(),
 
       f7Card(
         h4("Thoughts that you would be better off dead, or of hurting yourself"),
         f7Select("PHQitem9", NULL , choices = c("Choose a response", "Not at all","Several Days","More than half the days","Nearly every day"), selected = NULL),
         footer = NULL,
         hairlines = F, strong = T, inset = F, tablet = FALSE),
-
+        hr(),
 
       f7Button("PHQ9Submit", "Continue")
     )
@@ -397,49 +407,49 @@ observeEvent(input$Login,{
         f7Select("GADitem1", NULL , choices = c("Choose a response", "Not at all","Several Days","More than half the days","Nearly every day"), selected = NULL),
         footer = NULL,
         hairlines = F, strong = T, inset = F, tablet = FALSE),
-
+        hr(),
 
       f7Card(
         h4("Not being able to stop or control worrying"),
         f7Select("GADitem2", NULL , choices = c("Choose a response", "Not at all","Several Days","More than half the days","Nearly every day"), selected = NULL),
         footer = NULL,
         hairlines = F, strong = T, inset = F, tablet = FALSE),
-
+        hr(),
 
       f7Card(
         h4("Worrying too much about different things"),
         f7Select("GADitem3", NULL , choices = c("Choose a response", "Not at all","Several Days","More than half the days","Nearly every day"), selected = NULL),
         footer = NULL,
         hairlines = F, strong = T, inset = F, tablet = FALSE),
-
+        hr(),
 
       f7Card(
         h4("Trouble relaxing"),
         f7Select("GADitem4", NULL , choices = c("Choose a response", "Not at all","Several Days","More than half the days","Nearly every day"), selected = NULL),
         footer = NULL,
         hairlines = F, strong = T, inset = F, tablet = FALSE),
-
+        hr(),
 
       f7Card(
         h4("Being so restless that it is hard to sit still"),
         f7Select("GADitem5", NULL , choices = c("Choose a response", "Not at all","Several Days","More than half the days","Nearly every day"), selected = NULL),
         footer = NULL,
         hairlines = F, strong = T, inset = F, tablet = FALSE),
-
+        hr(),
 
       f7Card(
         h4("Becoming easily annoyed or irritable"),
         f7Select("GADitem6", NULL , choices = c("Choose a response", "Not at all","Several Days","More than half the days","Nearly every day"), selected = NULL),
         footer = NULL,
         hairlines = F, strong = T, inset = F, tablet = FALSE),
-
+        hr(),
 
       f7Card(
         h4("Feeling afraid, as if something awful might happen"),
         f7Select("GADitem7", NULL , choices = c("Choose a response", "Not at all","Several Days","More than half the days","Nearly every day"), selected = NULL),
         footer = NULL,
         hairlines = F, strong = T, inset = F, tablet = FALSE),
-
+        hr(),
 
       f7Button("GAD7Submit", "Finish")
     )
