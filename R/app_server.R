@@ -5,8 +5,7 @@
 #' @import shiny
 #' @import shinyMobile
 #' @import dplyr
-#' @import shinyalert
-#' @import shinyjs
+#' @importFrom shinyalert shinyalert
 #' @noRd
 app_server <- function(input, output, session) {
 

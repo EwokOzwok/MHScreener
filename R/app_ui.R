@@ -133,17 +133,21 @@ app_ui <- function(request) {
 golem_add_external_resources <- function() {
   # add_resource_path(
   #   "www",
-  #   app_sys("app/www")
+  #   app_sys("./www"),
   # )
-
+  addResourcePath("css", "./www/framework7.bundle.min.css")
   tags$head(
 
-    includeCSS("www/framework7.bundle.min.css"),
-    favicon()
+
+# favicon -----------------------------------------------------------------
+
+
+    favicon(),
     # bundle_resources(
-    #   path = app_sys("app/www"),
-    #   app_title = "MHScreener"
-    # )
+    #   path = app_sys("./www"),
+    #   app_title = "MHScreener"),
+
+    includeCSS("./www/framework7.bundle.min.css")
     # Add here other external resources
     # for example, you can add shinyalert::useShinyalert()
   )
