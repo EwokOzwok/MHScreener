@@ -52,8 +52,14 @@ usethis::use_git()
 ## Init Testing Infrastructure ----
 ## Create a template for tests
 # golem::use_recommended_tests()
-
-## Favicon ----
+golem::use_internal_css_file(
+  "./www/framework7.bundle.min.css",
+  "framework7.bundle.min.css",
+  pkg = golem::get_golem_wd(),
+  dir = "/www",
+  open = FALSE,
+  dir_create = F
+)## Favicon ----
 # If you want to change the favicon (default is golem's one)
 golem::use_favicon() # path = "path/to/ico". Can be an online file.
 # golem::remove_favicon() # Uncomment to remove the default favicon
