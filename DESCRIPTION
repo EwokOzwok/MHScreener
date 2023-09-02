@@ -10,7 +10,6 @@ Imports:
     dplyr,
     golem (>= 0.4.1),
     htmltools,
-    pkgload,
     shiny (>= 1.7.5),
     shinyalert,
     shinyjs,
