@@ -89,16 +89,16 @@ app_server <- function(input, output, session) {
       updateF7Tabs(session = session, id = "tabs", selected = "GAD7tab")
 
       if(PHQ9Data$PHQ9==0){
-        SuicideAlert<-c("The student has NOT endorsed any suicidal ideation in the past 2 weeks")
+        SuicideAlert<-c("No suicidal ideation in the past 2 weeks")
       }
       if(PHQ9Data$PHQ9==1){
-        SuicideAlert<-c("The student has endorsed active suicidal ideation for SEVERAL DAYS in the past 2 weeks!")
+        SuicideAlert<-c("Suicidal ideation for SEVERAL DAYS in the past 2 weeks!")
       }
       if(PHQ9Data$PHQ9==2){
-        SuicideAlert<-c("The student has endorsed active suicidal ideation for MORE THAN HALF OF THE DAYS in the past 2 weeks!")
+        SuicideAlert<-c("Suicidal ideation for MORE THAN HALF OF THE DAYS in the past 2 weeks!")
       }
       if(PHQ9Data$PHQ9==3){
-        SuicideAlert<-c("The student has endorsed active suicidal ideation for NEARLY EVERY DAY in the past 2 weeks!")
+        SuicideAlert<-c("Suicidal ideation for NEARLY EVERY DAY in the past 2 weeks!")
       }
 
       if(PHQ9Data$Total_PHQ9 > 0 && PHQ9Data$Total_PHQ9 < 5){
@@ -150,21 +150,21 @@ app_server <- function(input, output, session) {
       output$PHQ9summary<- renderUI({
         tagList(
           f7Card(
-            f7Align(h2(paste("Depression Severity:  ", Severity)), side=c("left")),
+            f7Align(h3(paste("Depression Severity: ", Severity)), side=c("left")),
             hr(),
-            f7Align(h2(paste("Suicidality:  ", SuicideAlert)), side=c("left")),
+            f7Align(h3(paste("Suicidality: ", SuicideAlert)), side=c("left")),
             hr(),
-            f7Align(h2(paste("Total PHQ9 score:  ", c(PHQ9Data$Total_PHQ9))), side=c("left")),
+            f7Align(h3(paste("Total PHQ9 score: ", c(PHQ9Data$Total_PHQ9))), side=c("left")),
             hr(),
-            f7Align(h2(DepressionFlagText), side=c("left")),
-            h3(Dflag1),
-            h3(Dflag2),
-            h3(Dflag3),
-            h3(Dflag4),
-            h3(Dflag5),
-            h3(Dflag6),
-            h3(Dflag7),
-            h3(Dflag8),
+            f7Align(h3(DepressionFlagText), side=c("left")),
+            h4(Dflag1),
+            h4(Dflag2),
+            h4(Dflag3),
+            h4(Dflag4),
+            h4(Dflag5),
+            h4(Dflag6),
+            h4(Dflag7),
+            h4(Dflag8),
             hr(),
             footer = NULL,
             hairlines = F, strong = T, inset = F, tablet = FALSE)
@@ -245,18 +245,18 @@ app_server <- function(input, output, session) {
       output$GAD7summary<- renderUI({
         tagList(
             f7Card(
-            f7Align(h2(paste("Anxiety Severity:  ", ANXSeverity)), side=c("left")),
+            f7Align(h3(paste("Anxiety Severity: ", ANXSeverity)), side=c("left")),
             hr(),
-            f7Align(h2(paste("Total GAD7 score:  ",c(GAD7data$Total_GAD7))), side=c("left")),
+            f7Align(h3(paste("Total GAD7 score: ",c(GAD7data$Total_GAD7))), side=c("left")),
             hr(),
-            f7Align(h2(AnxietyFlagText), side=c("left")),
-            h3(Aflag1),
-            h3(Aflag2),
-            h3(Aflag3),
-            h3(Aflag4),
-            h3(Aflag5),
-            h3(Aflag6),
-            h3(Aflag7),
+            f7Align(h3(AnxietyFlagText), side=c("left")),
+            h4(Aflag1),
+            h4(Aflag2),
+            h4(Aflag3),
+            h4(Aflag4),
+            h4(Aflag5),
+            h4(Aflag6),
+            h4(Aflag7),
             hr(),
             footer = NULL,
             hairlines = F, strong = T, inset = F, tablet = FALSE)
