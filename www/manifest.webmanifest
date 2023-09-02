@@ -1,6 +1,6 @@
 {
-  "name": "ACCESS Screener",
-  "short_name": "ACCESS Screener",
+  "name": "MH Screener",
+  "short_name": "Screener",
   "description": "Project ACCESS Mental Health Screener App.",
   "lang": "en-US",
   "start_url": "https://ualbanyprojectaccess.shinyapps.io/MHScreener",
