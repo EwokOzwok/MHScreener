@@ -136,7 +136,6 @@ golem_add_external_resources <- function() {
   #   app_sys("./www"),
   # )
 
-  shinyAppDir(".")
   tags$head(
 
 
