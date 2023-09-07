@@ -11,12 +11,15 @@ app_ui <- function(request) {
     # Leave this function for adding external resources
     golem_add_external_resources(),
     # Your application UI logic
-    tags$body(HTML('<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KGWTF6SX"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>')),
+
     shinyMobile::f7Page(
       title = "Mental Health Screener",
       options = list(theme=c("auto"), dark=TRUE, preloader = F,  pullToRefresh=F),
       allowPWA=TRUE,
+
+      tags$body(HTML('<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KGWTF6SX"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>')),
+
       f7TabLayout(
         # panels are not mandatory. These are similar to sidebars
         navbar = f7Navbar(
