@@ -378,7 +378,7 @@ observeEvent(input$Login,{
   output$PHQ9<-renderUI({
     tagList(
       f7Card(
-        h3("Little interest or pleasure in doing things"),
+        h4("Little interest or pleasure in doing things"),
         f7Select("PHQitem1", NULL , choices = c("Choose a response", "Not at all","Several Days","More than half the days","Nearly every day"), selected = NULL),
         footer = NULL,
         hairlines = F, strong = T, inset = F, tablet = FALSE),
