@@ -138,16 +138,30 @@ golem_add_external_resources <- function() {
 
   tags$head(
 
-
 # favicon -----------------------------------------------------------------
-
-
     favicon(),
     # bundle_resources(
     #   path = app_sys("./www"),
     #   app_title = "MHScreener"),
     # includeCSS("./www/newcss.css"),
-    HTML('<link rel="stylesheet" type="text/css" href="https://ewokozwok.github.io/MHScreener/www/framework7.bundle.min.css">')
+# Google Analytics
+HTML('<script async src="https://www.googletagmanager.com/gtag/js?id=G-5EFHNS6HYV"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+
+  gtag("config", "G-5EFHNS6HYV");
+  </script>'),
+# Google Tag
+HTML('<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({“gtm.start”:
+    new Date().getTime(),event:”gtm.js”});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!=“dataLayer”?”&l=“+l:”“;j.async=true;j.src=
+      “https://www.googletagmanager.com/gtm.js?id=“+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,”script”,”dataLayer”,”GTM-KGWTF6SX”);</script>'),
+
+
+HTML('<link rel="stylesheet" type="text/css" href="https://ewokozwok.github.io/MHScreener/www/framework7.bundle.min.css">')
 
 
 
@@ -155,4 +169,7 @@ golem_add_external_resources <- function() {
     # for example, you can add shinyalert::useShinyalert()
 
   )
+  tags$body(HTML('<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KGWTF6SX"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>'))
+
 }
