@@ -188,33 +188,43 @@ app_server <- function(input, output, session) {
           tagList(
             hr(),
             f7Align(h2("NAVIGATOR INSTRUCTIONS"), side=c("center")),
-            f7Align(h3("The student is at high or imminent risk for suicide!"), side=c("center")),
-            f7Align(h3("YOU ARE REQUIRED TO CALL THE SUPERVISOR"), side=c("center")),
-            f7Align(h3("Jess - 518 469-8845"), side=c("left")),
-            f7Align(h3("Dolores - 518 573-1947"), side=c("left")),
-            f7Align(h3("Provide the student with Crisis Resources"), side=c("left")),
+            hr(),
+            f7Align(h2("The student is at high risk or imminent risk for suicide!"), side=c("center")),
+            f7Align(h3("Check the suicidality note above, and ask the students about thoughts of suicide."), side=c("center")),
+            f7Align(h3("If the student is at imminent risk, YOU ARE REQUIRED TO CALL THE SUPERVISOR"), side=c("center")),
+            f7Align(h3("Jess - 518 469-8845"), side=c("center")),
+            f7Align(h3("Dolores - 518 573-1947"), side=c("center")),
+            hr(),
+            f7Align(h3("Provide the student with Crisis Resources"), side=c("center")),
+            hr(),
             f7Align(h3("University Police - 518 442-3131"), side=c("left")),
             f7Align(h3("Capital District Psychiatric Center - 518 549-6500"), side=c("left")),
+            hr(),
             )
         })
       } else { output$ResultsInstructions1<- renderUI({}) }
 
 
-      if(PHQ9Data$Total_PHQ9 < 20 && PHQ9Data$Total_PHQ9 > 14 || PHQ9Data$PHQ9 == 1){
+      if(PHQ9Data$Total_PHQ9 < 20 && PHQ9Data$Total_PHQ9 > 14 | PHQ9Data$PHQ9 == 1){
         output$ResultsInstructions2<- renderUI({
           tagList(
             hr(),
             f7Align(h2("NAVIGATOR INSTRUCTIONS"), side=c("center")),
-            f7Align(h3("Ask the students about thoughts of suicide."), side=c("center")),
+            hr(),
+            f7Align(h2("The student does not appear to be at imminent risk of suicide."), side=c("center")),
+            f7Align(h3("Check the suicidality note above, and ask the students about thoughts of suicide."), side=c("center")),
             f7Align(h3("If the student is at imminent risk, you are REQUIRED to call the supervisor"), side=c("center")),
-            f7Align(h3("Jess - 518 469-8845"), side=c("left")),
-            f7Align(h3("Dolores - 518 573-1947"), side=c("left")),
-            f7Align(h3("Provide the student with Crisis Resources"), side=c("left")),
+            f7Align(h3("Jess - 518 469-8845"), side=c("center")),
+            f7Align(h3("Dolores - 518 573-1947"), side=c("center")),
+            hr(),
+            f7Align(h2("Provide the student with Crisis/Support Resources"), side=c("center")),
+            hr(),
             f7Align(h3("University Police - 518 442-3131"), side=c("left")),
             f7Align(h3("Capital District Psychiatric Center - 518 549-6500"), side=c("left")),
             f7Align(h3("Give the student CAPS and Middle Earth Information"), side=c("left")),
             f7Align(h3("CAPS – A student can call CAPS 24 hours, dial 2 after hours - 518 442-5800"), side=c("left")),
             f7Align(h3("Middle Earth - 518 442-5777"), side=c("left")),
+            hr(),
 
           )
         })
@@ -227,25 +237,30 @@ app_server <- function(input, output, session) {
 
       output$PHQ9summary<- renderUI({
         tagList(
-          f7Card(title = f7Align(h2("Depression", side=c("center"))),
-            f7Align(h3(paste("Severity: ", Severity)), side=c("left")),
-            hr(),
-            f7Align(h3(paste("Suicidality: ", SuicideAlert)), side=c("left")),
-            uiOutput("ResultsInstructions1"),
-            uiOutput("ResultsInstructions2"),
-            hr(),
-            f7Align(h3(paste("Total PHQ9 score: ", c(PHQ9Data$Total_PHQ9))), side=c("left")),
-            hr(),
-            f7Align(h3(DepressionFlagText), side=c("left")),
-            h4(Dflag1),
-            h4(Dflag2),
-            h4(Dflag3),
-            h4(Dflag4),
-            h4(Dflag5),
-            h4(Dflag6),
-            h4(Dflag7),
-            h4(Dflag8),
-            hr(),
+          f7Card(title = f7Align(h2("Depression Summary", side=c("center"))),
+                 f7Align(h2(paste("Suicidality: ", SuicideAlert)), side=c("left")),
+                 f7Align(h3(paste("Severity: ", Severity)), side=c("left")),
+                 f7Align(h3(paste("Total PHQ9 score: ", c(PHQ9Data$Total_PHQ9))), side=c("left")),
+                 uiOutput("ResultsInstructions1"),
+                 uiOutput("ResultsInstructions2"),
+                 f7Shadow(
+                   intensity = 5,
+                   hover = TRUE,
+                     f7Accordion(
+                       f7Card(
+                       f7AccordionItem(title="View Flagged Items", open=F,
+                                       f7Align(h3(DepressionFlagText), side=c("left")),
+                                       hr(),
+                                       h4(Dflag1),
+                                       h4(Dflag2),
+                                       h4(Dflag3),
+                                       h4(Dflag4),
+                                       h4(Dflag5),
+                                       h4(Dflag6),
+                                       h4(Dflag7),
+                                       h4(Dflag8))),
+                     hairlines = F, strong = T, inset =
+                       F, tablet = FALSE)),
             footer = NULL,
             hairlines = F, strong = T, inset = F, tablet = FALSE)
         )
@@ -349,18 +364,26 @@ app_server <- function(input, output, session) {
         tagList(
             f7Card(title = f7Align(h2("Anxiety", side=c("center"))),
             f7Align(h3(paste("Severity: ", ANXSeverity)), side=c("left")),
-            hr(),
             f7Align(h3(paste("Total GAD7 score: ",c(GAD7data$Total_GAD7))), side=c("left")),
             hr(),
-            f7Align(h3(AnxietyFlagText), side=c("left")),
-            h4(Aflag1),
-            h4(Aflag2),
-            h4(Aflag3),
-            h4(Aflag4),
-            h4(Aflag5),
-            h4(Aflag6),
-            h4(Aflag7),
-            hr(),
+            f7Shadow(
+              intensity = 5,
+              hover = TRUE,
+              f7Accordion(
+                f7Card(
+                  f7AccordionItem(title="View Flagged Items", open=F,
+                                  f7Align(h3(AnxietyFlagText), side=c("left")),
+                                  hr(),
+                                  h4(Aflag1),
+                                  h4(Aflag2),
+                                  h4(Aflag3),
+                                  h4(Aflag4),
+                                  h4(Aflag5),
+                                  h4(Aflag6),
+                                  h4(Aflag7))),
+                hairlines = F, strong = T, inset =
+                  F, tablet = FALSE)
+            ),
             footer = NULL,
             hairlines = F, strong = T, inset = F, tablet = FALSE)
         )

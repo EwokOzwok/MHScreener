@@ -95,16 +95,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
             uiOutput("PHQ9summary"),
             uiOutput("GAD7summary"),
+            f7Card(
             f7Shadow(
               intensity = 5,
               hover = TRUE,
-              f7Card(
+
                 f7Accordion(
-                  f7AccordionItem(title="Start Over", open=F,
-                                  f7Button("StartOver", "Start Over"))),
+                  f7Card(
+                    f7AccordionItem(title="Finish Screening Appointment", open=F,
+                                  br(),
+                                  f7Segment(container = c("segment"),
+                                            f7Button(NULL, "Complete Record Management Entry", href = "https://albany.az1.qualtrics.com/jfe/form/SV_9prCsj2Rp8KPcoe"),
+                                            f7Button("StartOver", "Start Over"),
+                                            strong=T,
+                                            rounded=T,
+                                            shadow=T))
+                  ),
 
                 hairlines = F, strong = T, inset =
                   F, tablet = FALSE)
+            )
             )
           )
 
