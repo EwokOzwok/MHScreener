@@ -190,7 +190,7 @@ app_server <- function(input, output, session) {
             f7Align(h2("NAVIGATOR INSTRUCTIONS"), side=c("center")),
             hr(),
             f7Align(h2("The student is at high risk or imminent risk for suicide!"), side=c("center")),
-            f7Align(h3("Check the suicidality note above, and ask the students about thoughts of suicide."), side=c("center")),
+            f7Align(h3("Check the suicidality note above, and ask the student about thoughts of suicide."), side=c("center")),
             f7Align(h3("If the student is at imminent risk, YOU ARE REQUIRED TO CALL THE SUPERVISOR"), side=c("center")),
             f7Align(h3("Jess - 518 469-8845"), side=c("center")),
             f7Align(h3("Dolores - 518 573-1947"), side=c("center")),
@@ -212,7 +212,7 @@ app_server <- function(input, output, session) {
             f7Align(h2("NAVIGATOR INSTRUCTIONS"), side=c("center")),
             hr(),
             f7Align(h2("The student does not appear to be at imminent risk of suicide."), side=c("center")),
-            f7Align(h3("Check the suicidality note above, and ask the students about thoughts of suicide."), side=c("center")),
+            f7Align(h3("Check the suicidality note above, and ask the student about thoughts of suicide."), side=c("center")),
             f7Align(h3("If the student is at imminent risk, you are REQUIRED to call the supervisor"), side=c("center")),
             f7Align(h3("Jess - 518 469-8845"), side=c("center")),
             f7Align(h3("Dolores - 518 573-1947"), side=c("center")),
@@ -231,6 +231,32 @@ app_server <- function(input, output, session) {
       } else { output$ResultsInstructions2<- renderUI({}) }
 
 
+      if(PHQ9Data$Total_PHQ9 < 15 && PHQ9Data$PHQ9 < 1){
+        output$ResultsInstructions3<- renderUI({
+          tagList(
+            hr(),
+            f7Align(h2("NAVIGATOR INSTRUCTIONS"), side=c("center")),
+            hr(),
+            f7Align(h2("The student does not appear to be at risk of suicide."), side=c("center")),
+            f7Align(h3("Ask the student if they've ever thought about suicide."), side=c("center")),
+            f7Align(h3("If the student is at imminent risk, you are REQUIRED to call the supervisor"), side=c("center")),
+            f7Align(h3("Jess - 518 469-8845"), side=c("center")),
+            f7Align(h3("Dolores - 518 573-1947"), side=c("center")),
+            hr(),
+            f7Align(h2("Provide the student with Support Resources"), side=c("center")),
+            hr(),
+            f7Align(h3("University Police - 518 442-3131"), side=c("left")),
+            f7Align(h3("Capital District Psychiatric Center - 518 549-6500"), side=c("left")),
+            f7Align(h3("Give the student CAPS and Middle Earth Information"), side=c("left")),
+            f7Align(h3("CAPS – A student can call CAPS 24 hours, dial 2 after hours - 518 442-5800"), side=c("left")),
+            f7Align(h3("Middle Earth - 518 442-5777"), side=c("left")),
+            hr(),
+
+          )
+        })
+      } else { output$ResultsInstructions3<- renderUI({}) }
+
+
 
 
 
@@ -243,6 +269,7 @@ app_server <- function(input, output, session) {
                  f7Align(h3(paste("Total PHQ9 score: ", c(PHQ9Data$Total_PHQ9))), side=c("left")),
                  uiOutput("ResultsInstructions1"),
                  uiOutput("ResultsInstructions2"),
+                 uiOutput("ResultsInstructions3"),
                  f7Shadow(
                    intensity = 5,
                    hover = TRUE,
