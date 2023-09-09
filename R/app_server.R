@@ -276,6 +276,7 @@ app_server <- function(input, output, session) {
                      f7Accordion(
                        f7Card(
                        f7AccordionItem(title="View Flagged Items", open=F,
+                                       f7Card(
                                        f7Align(h3(DepressionFlagText), side=c("left")),
                                        hr(),
                                        h4(Dflag1),
@@ -285,7 +286,7 @@ app_server <- function(input, output, session) {
                                        h4(Dflag5),
                                        h4(Dflag6),
                                        h4(Dflag7),
-                                       h4(Dflag8))),
+                                       h4(Dflag8)))),
                      hairlines = F, strong = T, inset =
                        F, tablet = FALSE)),
             footer = NULL,
@@ -389,7 +390,7 @@ app_server <- function(input, output, session) {
 
       output$GAD7summary<- renderUI({
         tagList(
-            f7Card(title = f7Align(h2("Anxiety", side=c("center"))),
+            f7Card(title = f7Align(h2("Anxiety Summary", side=c("center"))),
             f7Align(h3(paste("Severity: ", ANXSeverity)), side=c("left")),
             f7Align(h3(paste("Total GAD7 score: ",c(GAD7data$Total_GAD7))), side=c("left")),
             hr(),
@@ -399,6 +400,7 @@ app_server <- function(input, output, session) {
               f7Accordion(
                 f7Card(
                   f7AccordionItem(title="View Flagged Items", open=F,
+                                  f7Card(
                                   f7Align(h3(AnxietyFlagText), side=c("left")),
                                   hr(),
                                   h4(Aflag1),
@@ -407,7 +409,7 @@ app_server <- function(input, output, session) {
                                   h4(Aflag4),
                                   h4(Aflag5),
                                   h4(Aflag6),
-                                  h4(Aflag7))),
+                                  h4(Aflag7)))),
                 hairlines = F, strong = T, inset =
                   F, tablet = FALSE)
             ),
@@ -592,6 +594,71 @@ observeEvent(input$Login,{
         hr(),
 
       f7Button("GAD7Submit", "Finish")
+    )
+  })
+
+
+
+  output$suicide<- renderUI({
+    tagList(
+      f7Block(
+        f7Card(
+      f7Shadow(
+        intensity = 5,
+        hover = TRUE,
+        f7Accordion(
+            f7Accordion(h2("Suicide Risk Assessment Guide"),
+            f7AccordionItem(title="Ideation", open=F,
+                            f7Card(
+                            hr(),
+                            f7Align(h3("Frequency, Intensity, and Duration"), side=c("center")),
+                            hr(),
+                            f7Align(h3("Have you thought about ending your life?"), side=c("left")),
+                            f7Align(h4("During the past 48 hours, past month, and worst ever..."), side=c("left")),
+                            f7Align(h4("How much?"), side=c("left")),
+                            f7Align(h4("How intense?"), side=c("left")),
+                            f7Align(h4("Lasting how long?"), side=c("left")))),
+
+            f7AccordionItem(title="Plan", open=F,
+                            f7Card(
+                            hr(),
+                            f7Align(h3("Timing, Location, Lethality, Availability/Means"), side=c("center")),
+                            hr(),
+                            f7Align(h3("When you think about ending your life, what do you imagine?"), side=c("left")),
+                            f7Align(h4("When?"), side=c("left")),
+                            f7Align(h4("Where?"), side=c("left")),
+                            f7Align(h4("How would you do it?"), side=c("left")),
+                            f7Align(h4("In what way?"), side=c("left")))),
+
+            f7AccordionItem(title="Behavior", open=F,
+                            f7Card(
+                            hr(),
+                            f7Align(h3("Past attempts, aborted attempts, rehearsals"), side=c("center")),
+                            hr(),
+                            f7Align(h3("Have you thought about ending your life or tried to end your life in the past?"), side=c("left")),
+                            f7Align(h4("Have you ever taken actions to practice or rehearse ending your life?"), side=c("left")),
+                            f7Align(h5("Examples: Tying a noose, loading a gun, measuring a lethal dose of some substance"), side=c("left")),
+                            hr(),
+                            f7Align(h3("Non-suicidal self-injurious behavior"), side=c("center")),
+                            hr(),
+                            f7Align(h4("Have you done anything to hurt yourself before?"), side=c("left")),
+                            f7Align(h5("Examples: Cutting yourself, Burnining yourself, etc."), side=c("left")))),
+
+            f7AccordionItem(title="Intent", open=F,
+                            f7Card(
+                            hr(),
+                            f7Align(h3("To what extent do they expect to carry out the plan and believe the plan to be lethal vs. harmful"), side=c("center")),
+                            hr(),
+                            f7Align(h3("If you carried out this plan, what do you think would happen?"), side=c("left")),
+                            f7Align(h4("HIGH RISK - 'I'd be dead, it'd be over'"), side=c("left")),
+                            f7Align(h4("MODERATE RISK - 'I'd be hurt or end up in the hospital'"), side=c("left")),
+                            f7Align(h4("LOWER RISK - 'I don’t want to die, I just don’t want to keep suffering'"), side=c("left")))),
+            br(),
+            ),
+          hairlines = F, strong = T, inset =
+            F, tablet = FALSE))))
+
+
     )
   })
 

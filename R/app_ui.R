@@ -92,7 +92,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             tabName = "Output_tab",
             icon = f7Icon("house_fill"),
             active = F,
-
+            uiOutput("suicide"),
             uiOutput("PHQ9summary"),
             uiOutput("GAD7summary"),
             f7Card(
@@ -105,7 +105,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     f7AccordionItem(title="Finish Screening Appointment", open=F,
                                   br(),
                                   f7Segment(container = c("segment"),
-                                            f7Button(NULL, "Complete Record Management Entry", href = "https://albany.az1.qualtrics.com/jfe/form/SV_9prCsj2Rp8KPcoe"),
+                                            f7Button(NULL, "Enter Record", href = "https://albany.az1.qualtrics.com/jfe/form/SV_9prCsj2Rp8KPcoe"),
                                             f7Button("StartOver", "Start Over"),
                                             strong=T,
                                             rounded=T,
