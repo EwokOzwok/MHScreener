@@ -92,29 +92,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             tabName = "Output_tab",
             icon = f7Icon("house_fill"),
             active = F,
+             uiOutput("PHQ9summary"),
             uiOutput("suicide"),
-            uiOutput("PHQ9summary"),
             uiOutput("GAD7summary"),
             f7Card(
             f7Shadow(
               intensity = 5,
               hover = TRUE,
 
-                f7Accordion(
-                  f7Card(
-                    f7AccordionItem(title="Finish Screening Appointment", open=F,
-                                  br(),
-                                  f7Segment(container = c("segment"),
-                                            f7Button(NULL, "Enter Record", href = "https://albany.az1.qualtrics.com/jfe/form/SV_9prCsj2Rp8KPcoe"),
-                                            f7Button("StartOver", "Start Over"),
-                                            strong=T,
-                                            rounded=T,
-                                            shadow=T))
-                  ),
-
-                hairlines = F, strong = T, inset =
-                  F, tablet = FALSE)
-            )
+                f7Accordion(f7Align(h2("Finish Screening Appointment"),side=c("center")),
+                            f7AccordionItem(title="Record Entry", open=F,
+                                            f7Card(
+                                              f7Button(NULL, "Enter Record", href = "https://albany.az1.qualtrics.com/jfe/form/SV_9prCsj2Rp8KPcoe"),
+                                              hairlines = F, strong = T, inset = F, tablet = FALSE)),
+                            f7AccordionItem(title="Start Over", open=F,
+                                            f7Card(
+                                              f7Button("StartOver", "Start Over"),
+                                              hairlines = F, strong = T, inset = F, tablet = FALSE)),
+                            br())),
+                            hairlines = F, strong = T, inset = F, tablet = FALSE)
+              )
             )
           )
 
@@ -125,15 +122,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         )
       )
-    )
 
-
-
-
-
-
-
-  )
 }
 
 #' Add external Resources to the Application

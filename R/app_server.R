@@ -237,7 +237,7 @@ app_server <- function(input, output, session) {
             hr(),
             f7Align(h2("NAVIGATOR INSTRUCTIONS"), side=c("center")),
             hr(),
-            f7Align(h2("The student does not appear to be at risk of suicide"), side=c("center")),
+            f7Align(h2("The student does not appear to be at imminent risk of suicide"), side=c("center")),
             f7Align(h3("Ask the student if they've ever thought about suicide"), side=c("center")),
             f7Align(h3("If the student is at imminent risk, you are REQUIRED to call the supervisor"), side=c("center")),
             f7Align(h3("Jess - 518 469-8845"), side=c("center")),
@@ -263,34 +263,53 @@ app_server <- function(input, output, session) {
 
       output$PHQ9summary<- renderUI({
         tagList(
-          f7Card(title = f7Align(h2("Depression Summary", side=c("center"))),
-                 f7Align(h2(paste("Suicidality: ", SuicideAlert)), side=c("left")),
-                 f7Align(h3(paste("Severity: ", Severity)), side=c("left")),
-                 f7Align(h3(paste("Total PHQ9 score: ", c(PHQ9Data$Total_PHQ9))), side=c("left")),
-                 uiOutput("ResultsInstructions1"),
-                 uiOutput("ResultsInstructions2"),
-                 uiOutput("ResultsInstructions3"),
-                 f7Shadow(
-                   intensity = 5,
-                   hover = TRUE,
-                     f7Accordion(
-                       f7Card(
-                       f7AccordionItem(title="View Flagged Items", open=F,
-                                       f7Card(
-                                       f7Align(h3(DepressionFlagText), side=c("left")),
-                                       hr(),
-                                       h4(Dflag1),
-                                       h4(Dflag2),
-                                       h4(Dflag3),
-                                       h4(Dflag4),
-                                       h4(Dflag5),
-                                       h4(Dflag6),
-                                       h4(Dflag7),
-                                       h4(Dflag8)))),
-                     hairlines = F, strong = T, inset =
-                       F, tablet = FALSE)),
-            footer = NULL,
-            hairlines = F, strong = T, inset = F, tablet = FALSE)
+          f7Card(
+            f7Shadow(
+              intensity = 5,
+              hover = TRUE,
+                    f7Accordion(f7Align(h2("Depression Summary"), side=c("center")),
+                      f7AccordionItem(title="Suicidality & Severity", open=F,
+                                      f7Card(
+                                        hr(),
+                                        f7Align(h1("Suicidality"), side=c("center")),
+                                        f7Align(h2(SuicideAlert), side=c("center")),
+                                        hr(),
+                                        f7Align(h1("Depression Severity"), side=c("center")),
+                                        f7Align(h2(Severity), side=c("center")),
+                                        hr(),
+                                        hairlines = F, strong = T, inset = F, tablet = FALSE)),
+
+                      f7AccordionItem(title="INSTRUCTIONS & REFERRALS", open=F,
+                                      f7Card(
+                                        uiOutput("ResultsInstructions1"),
+                                        uiOutput("ResultsInstructions2"),
+                                        uiOutput("ResultsInstructions3"),
+                                        hairlines = F, strong = T, inset = F, tablet = FALSE)),
+
+                      f7AccordionItem(title="PHQ9 Score", open=F,
+                                      f7Card(
+                                        hr(),
+                                        f7Align(h2("Total PHQ9 Score"), side=c("center")),
+                                        f7Align(h3(c(PHQ9Data$Total_PHQ9)), side=c("center")),
+                                        hr(),
+                                        hairlines = F, strong = T, inset = F, tablet = FALSE)),
+
+                      f7AccordionItem(title="View Flagged Items", open=F,
+                                      f7Card(
+                                        hr(),
+                                        f7Align(h2(DepressionFlagText), side=c("center")),
+                                        hr(),
+                                        h4(Dflag1),
+                                        h4(Dflag2),
+                                        h4(Dflag3),
+                                        h4(Dflag4),
+                                        h4(Dflag5),
+                                        h4(Dflag6),
+                                        h4(Dflag7),
+                                        h4(Dflag8),
+                                        hairlines = F, strong = T, inset = F, tablet = FALSE)),
+                      br())),
+                hairlines = F, strong = T, inset = F, tablet = FALSE)
         )
       })
     }
@@ -390,18 +409,31 @@ app_server <- function(input, output, session) {
 
       output$GAD7summary<- renderUI({
         tagList(
-            f7Card(title = f7Align(h2("Anxiety Summary", side=c("center"))),
-            f7Align(h3(paste("Severity: ", ANXSeverity)), side=c("left")),
-            f7Align(h3(paste("Total GAD7 score: ",c(GAD7data$Total_GAD7))), side=c("left")),
-            hr(),
+          f7Card(
             f7Shadow(
               intensity = 5,
               hover = TRUE,
-              f7Accordion(
-                f7Card(
-                  f7AccordionItem(title="View Flagged Items", open=F,
-                                  f7Card(
-                                  f7Align(h3(AnxietyFlagText), side=c("left")),
+              f7Accordion(f7Align(h2("Anxiety Summary"), side=c("center")),
+                f7AccordionItem(title="Severity", open=F,
+                                f7Card(
+                                  hr(),
+                                  f7Align(h1("Anxiety Severity"), side=c("center")),
+                                  f7Align(h2(ANXSeverity), side=c("center")),
+                                  hr(),
+                                  hairlines = F, strong = T, inset = F, tablet = FALSE)),
+
+                f7AccordionItem(title="GAD7 Score", open=F,
+                                f7Card(
+                                  hr(),
+                                  f7Align(h2("Total GAD7 Score"), side=c("center")),
+                                  f7Align(h3(c(GAD7data$Total_GAD7)), side=c("center")),
+                                  hr(),
+                                  hairlines = F, strong = T, inset = F, tablet = FALSE)),
+
+                f7AccordionItem(title="View Flagged Items", open=F,
+                                f7Card(
+                                  hr(),
+                                  f7Align(h2(AnxietyFlagText), side=c("center")),
                                   hr(),
                                   h4(Aflag1),
                                   h4(Aflag2),
@@ -409,18 +441,12 @@ app_server <- function(input, output, session) {
                                   h4(Aflag4),
                                   h4(Aflag5),
                                   h4(Aflag6),
-                                  h4(Aflag7)))),
-                hairlines = F, strong = T, inset =
-                  F, tablet = FALSE)
-            ),
-            footer = NULL,
+                                  h4(Aflag7),
+                                  hairlines = F, strong = T, inset = F, tablet = FALSE)),
+                br())),
             hairlines = F, strong = T, inset = F, tablet = FALSE)
         )
       })
-
-
-
-
 
     }
 
@@ -601,13 +627,11 @@ observeEvent(input$Login,{
 
   output$suicide<- renderUI({
     tagList(
-      f7Block(
-        f7Card(
+      f7Card(
       f7Shadow(
         intensity = 5,
         hover = TRUE,
-        f7Accordion(
-            f7Accordion(h2("Suicide Risk Assessment Guide"),
+            f7Accordion(f7Align(h2("Suicide Risk Assessment Guide"), side=c("center")),
             f7AccordionItem(title="Ideation", open=F,
                             f7Card(
                             hr(),
@@ -617,7 +641,7 @@ observeEvent(input$Login,{
                             f7Align(h4("During the past 48 hours, past month, and worst ever..."), side=c("left")),
                             f7Align(h4("How much?"), side=c("left")),
                             f7Align(h4("How intense?"), side=c("left")),
-                            f7Align(h4("Lasting how long?"), side=c("left")))),
+                            f7Align(h4("Lasting how long?"), side=c("left"))),hairlines = F, strong = T, inset = F, tablet = FALSE),
 
             f7AccordionItem(title="Plan", open=F,
                             f7Card(
@@ -642,7 +666,7 @@ observeEvent(input$Login,{
                             f7Align(h3("Non-suicidal self-injurious behavior"), side=c("center")),
                             hr(),
                             f7Align(h4("Have you done anything to hurt yourself before?"), side=c("left")),
-                            f7Align(h5("Examples: Cutting yourself, Burnining yourself, etc."), side=c("left")))),
+                            f7Align(h5("Examples: Cutting yourself, Burnining yourself, etc."), side=c("left"))),hairlines = F, strong = T, inset = F, tablet = FALSE),
 
             f7AccordionItem(title="Intent", open=F,
                             f7Card(
@@ -652,11 +676,9 @@ observeEvent(input$Login,{
                             f7Align(h3("If you carried out this plan, what do you think would happen?"), side=c("left")),
                             f7Align(h4("HIGH RISK - 'I'd be dead, it'd be over'"), side=c("left")),
                             f7Align(h4("MODERATE RISK - 'I'd be hurt or end up in the hospital'"), side=c("left")),
-                            f7Align(h4("LOWER RISK - 'I don’t want to die, I just don’t want to keep suffering'"), side=c("left")))),
+                            f7Align(h4("LOWER RISK - 'I don’t want to die, I just don’t want to keep suffering'"), side=c("left"))),hairlines = F, strong = T, inset = F, tablet = FALSE),
             br(),
-            ),
-          hairlines = F, strong = T, inset =
-            F, tablet = FALSE))))
+            )),hairlines = F, strong = T, inset = F, tablet = FALSE)
 
 
     )
