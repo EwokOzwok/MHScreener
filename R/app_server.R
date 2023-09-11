@@ -183,7 +183,28 @@ app_server <- function(input, output, session) {
       } else {DepressionFlagText<-c("Flagged Depression Items")}
 
 
-      if(PHQ9Data$Total_PHQ9 > 19 | PHQ9Data$PHQ9 > 1){
+      if(PHQ9Data$PHQ9 > 1){
+        output$ResultsInstructions0<- renderUI({
+          tagList(
+            hr(),
+            f7Align(h2("NAVIGATOR INSTRUCTIONS"), side=c("center")),
+            hr(),
+            f7Align(h2("The student is at high risk or imminent risk for suicide!"), side=c("center")),
+            f7Align(h3("YOU ARE REQUIRED TO CALL THE SUPERVISOR WITH THE STUDENT IN THE ROOM!"), side=c("center")),
+            f7Align(h3("Jess - 518 469-8845"), side=c("center")),
+            f7Align(h3("Dolores - 518 573-1947"), side=c("center")),
+            hr(),
+            f7Align(h3("Provide the student with Crisis Resources"), side=c("center")),
+            hr(),
+            f7Align(h3("University Police - 518 442-3131"), side=c("left")),
+            f7Align(h3("Capital District Psychiatric Center - 518 549-6500"), side=c("left")),
+            hr(),
+          )
+        })
+      } else { output$ResultsInstructions0<- renderUI({}) }
+
+
+      if(PHQ9Data$Total_PHQ9 > 19 | PHQ9Data$PHQ9 < 2){
         output$ResultsInstructions1<- renderUI({
           tagList(
             hr(),
@@ -211,8 +232,8 @@ app_server <- function(input, output, session) {
             hr(),
             f7Align(h2("NAVIGATOR INSTRUCTIONS"), side=c("center")),
             hr(),
-            f7Align(h2("The student does not appear to be at imminent risk of suicide"), side=c("center")),
-            f7Align(h3("Check the suicidality note above, and ask the student about thoughts of suicide"), side=c("center")),
+            f7Align(h2("The student may be at high risk of suicide"), side=c("center")),
+            f7Align(h3("You must do a suicide evaluation to determine current suicidal ideation and intent. Provide Crisis and Mental Health Resources and Consider calling the Supervisor of the Day with student in the room if student is experiencing current suicidal ideation"), side=c("center")),
             f7Align(h3("If the student is at imminent risk, you are REQUIRED to call the supervisor"), side=c("center")),
             f7Align(h3("Jess - 518 469-8845"), side=c("center")),
             f7Align(h3("Dolores - 518 573-1947"), side=c("center")),
@@ -281,6 +302,7 @@ app_server <- function(input, output, session) {
 
                       f7AccordionItem(title="INSTRUCTIONS & REFERRALS", open=F,
                                       f7Card(
+                                        uiOutput("ResultsInstructions0"),
                                         uiOutput("ResultsInstructions1"),
                                         uiOutput("ResultsInstructions2"),
                                         uiOutput("ResultsInstructions3"),
