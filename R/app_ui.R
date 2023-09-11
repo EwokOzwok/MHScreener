@@ -17,13 +17,15 @@ app_ui <- function(request) {
       options = list(theme=c("auto"), dark=TRUE, preloader = F,  pullToRefresh=F),
       allowPWA=TRUE,
 
-      tags$body(HTML('<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KGWTF6SX"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>')),
 
       f7TabLayout(
         # panels are not mandatory. These are similar to sidebars
         navbar = f7Navbar(
           title= "Project ACCESS Mental Health Screener"),
+
+        tags$body(HTML('<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KGWTF6SX"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>')),
+
         # f7Tabs is a special toolbar with included navigation
         f7Tabs(
           animated = TRUE,
