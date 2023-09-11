@@ -220,6 +220,17 @@ app_server <- function(input, output, session) {
             f7Align(h3("University Police - 518 442-3131"), side=c("left")),
             f7Align(h3("Capital District Psychiatric Center - 518 549-6500"), side=c("left")),
             hr(),
+            f7Align(h3("CAPS – A student can call CAPS 24 hours, dial 2 after hours - 518 442-5800"), side=c("left")),
+            f7Align(h3("Middle Earth - 518 442-5777"), side=c("left")),
+            f7Align(h3("Use the Resource Rolodex to explore other Mental Health Referrals with the student"), side=c("left")),
+            hr(),
+            f7Align(h3("Other Resources"), side=c("left")),
+            hr(),
+            f7Align(h4("Use the Resource Rolodex to explore other Mental Health Referrals with the student"), side=c("left")),
+            f7Align(h4("Let’s Talk – Students can meet at 3 campus locations on Tues, Wed or Thurs for a brief conversation with a CAPS psychologist to learn more about CAPS services, to obtain brief support and to perhaps learn a coping strategy or two"), side=c("left")),
+            f7Align(h4("BetterMynd - a virtual counseling service that is free to UAlbany students for brief counseling (they just use their UAlbany email to access; note they will not accept students with SI or in crisis).  Students can go to https://bettermynd.com"), side=c("left")),
+            hr(),
+
             )
         })
       } else { output$ResultsInstructions1<- renderUI({}) }
@@ -234,6 +245,13 @@ app_server <- function(input, output, session) {
             f7Align(h2("Provide the student with Mental Health Resources"), side=c("center")),
             f7Align(h3("CAPS – A student can call CAPS 24 hours, dial 2 after hours - 518 442-5800"), side=c("left")),
             f7Align(h3("Middle Earth - 518 442-5777"), side=c("left")),
+            f7Align(h3("Use the Resource Rolodex to explore other Mental Health Referrals with the student"), side=c("left")),
+            hr(),
+            f7Align(h3("Other Resources"), side=c("left")),
+            hr(),
+            f7Align(h4("Use the Resource Rolodex to explore other Mental Health Referrals with the student"), side=c("left")),
+            f7Align(h4("Let’s Talk – Students can meet at 3 campus locations on Tues, Wed or Thurs for a brief conversation with a CAPS psychologist to learn more about CAPS services, to obtain brief support and to perhaps learn a coping strategy or two"), side=c("left")),
+            f7Align(h4("BetterMynd - a virtual counseling service that is free to UAlbany students for brief counseling (they just use their UAlbany email to access; note they will not accept students with SI or in crisis).  Students can go to https://bettermynd.com"), side=c("left")),
             hr(),
 
           )
