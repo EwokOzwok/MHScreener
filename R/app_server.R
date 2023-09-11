@@ -232,7 +232,6 @@ app_server <- function(input, output, session) {
             f7Align(h2("NAVIGATOR INSTRUCTIONS"), side=c("center")),
             hr(),
             f7Align(h2("Provide the student with Mental Health Resources"), side=c("center")),
-            f7Align(h3("Give the student CAPS and Middle Earth Information"), side=c("left")),
             f7Align(h3("CAPS – A student can call CAPS 24 hours, dial 2 after hours - 518 442-5800"), side=c("left")),
             f7Align(h3("Middle Earth - 518 442-5777"), side=c("left")),
             hr(),
