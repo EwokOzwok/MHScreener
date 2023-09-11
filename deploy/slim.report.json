@@ -21,7 +21,7 @@
   },
   "source_image": {
     "identity": {
-      "id": "sha256:de9fd31d6dbdc28441162635342d5160057a32d4749a4d7adfcdbe2a1aae7ae7",
+      "id": "sha256:7c965c5df33c273664dd5de157a346598890ba6982caf4a252bf97c0ba1f6846",
       "tags": [
         "latest"
       ],
@@ -29,14 +29,14 @@
         "mhscreener:latest"
       ]
     },
-    "size": 4133996826,
+    "size": 4143811320,
     "size_human": "4.1 GB",
-    "create_time": "2023-09-02T19:52:42Z",
+    "create_time": "2023-09-11T13:10:37Z",
     "docker_version": "",
     "architecture": "amd64",
     "exposed_ports": [
-      "8787/tcp",
-      "3838/tcp"
+      "3838/tcp",
+      "8787/tcp"
     ],
     "os": "linux",
     "labels": {
@@ -69,27 +69,27 @@
       "exe_path": ""
     }
   },
-  "minified_image_size": 488750395,
+  "minified_image_size": 489011206,
   "minified_image_size_human": "489 MB",
   "minified_image": "mhscreener.slim",
   "minified_image_has_data": true,
-  "minified_by": 8.45829869047983,
-  "artifact_location": "/tmp/slim-state/.slim-state/images/de9fd31d6dbdc28441162635342d5160057a32d4749a4d7adfcdbe2a1aae7ae7/artifacts",
+  "minified_by": 8.47385759090355,
+  "artifact_location": "/tmp/slim-state/.slim-state/images/7c965c5df33c273664dd5de157a346598890ba6982caf4a252bf97c0ba1f6846/artifacts",
   "container_report_name": "creport.json",
   "seccomp_profile_name": "mhscreener-seccomp.json",
   "apparmor_profile_name": "mhscreener-apparmor-profile",
   "image_stack": [
     {
       "is_top_image": true,
-      "id": "sha256:de9fd31d6dbdc28441162635342d5160057a32d4749a4d7adfcdbe2a1aae7ae7",
+      "id": "sha256:7c965c5df33c273664dd5de157a346598890ba6982caf4a252bf97c0ba1f6846",
       "full_name": "mhscreener:latest",
       "repo_name": "mhscreener",
       "version_tag": "latest",
       "raw_tags": [
         "mhscreener:latest"
       ],
-      "create_time": "2023-09-02T19:52:42Z",
-      "new_size": 4133996826,
+      "create_time": "2023-09-11T13:10:37Z",
+      "new_size": 4143811320,
       "new_size_human": "4.1 GB",
       "instructions": [
         {
@@ -732,29 +732,29 @@
         },
         {
           "type": "COPY",
-          "time": "2023-09-02T15:46:00Z",
+          "time": "2023-09-11T12:48:32Z",
           "is_nop": false,
           "local_image_exists": false,
           "layer_index": 0,
-          "size": 18454,
+          "size": 18456,
           "size_human": "18 kB",
           "params": "renv.lock.prod renv.lock",
           "command_snippet": "COPY renv.lock.prod renv.lock",
           "command_all": "COPY renv.lock.prod renv.lock",
           "comment": "buildkit.dockerfile.v0",
           "is_buildkit_instruction": true,
-          "inst_set_time_bucket": "2023-09-02T11:45:00-04:00",
+          "inst_set_time_bucket": "2023-09-11T08:45:00-04:00",
           "inst_set_time_index": 8,
           "inst_set_time_reverse_index": 1
         },
         {
           "type": "RUN",
-          "time": "2023-09-02T15:46:24Z",
+          "time": "2023-09-11T12:49:22Z",
           "is_nop": false,
           "local_image_exists": false,
           "layer_index": 0,
-          "size": 363597059,
-          "size_human": "364 MB",
+          "size": 368456174,
+          "size_human": "368 MB",
           "command_snippet": "RUN R -e 'renv::restore()'",
           "command_all": "RUN R -e 'renv::restore()'",
           "system_commands": [
@@ -762,35 +762,35 @@
           ],
           "comment": "buildkit.dockerfile.v0",
           "is_buildkit_instruction": true,
-          "inst_set_time_bucket": "2023-09-02T11:45:00-04:00",
+          "inst_set_time_bucket": "2023-09-11T08:45:00-04:00",
           "inst_set_time_index": 8,
           "inst_set_time_reverse_index": 1
         },
         {
           "type": "COPY",
-          "time": "2023-09-02T15:46:59Z",
+          "time": "2023-09-11T12:49:31Z",
           "is_nop": false,
           "local_image_exists": false,
           "layer_index": 0,
-          "size": 18454,
+          "size": 18456,
           "size_human": "18 kB",
           "params": "renv.lock.prod renv.lock",
           "command_snippet": "COPY renv.lock.prod renv.lock",
           "command_all": "COPY renv.lock.prod renv.lock",
           "comment": "buildkit.dockerfile.v0",
           "is_buildkit_instruction": true,
-          "inst_set_time_bucket": "2023-09-02T11:45:00-04:00",
+          "inst_set_time_bucket": "2023-09-11T08:45:00-04:00",
           "inst_set_time_index": 8,
           "inst_set_time_reverse_index": 1
         },
         {
           "type": "RUN",
-          "time": "2023-09-02T15:47:04Z",
+          "time": "2023-09-11T12:49:42Z",
           "is_nop": false,
           "local_image_exists": false,
           "layer_index": 0,
-          "size": 184644183,
-          "size_human": "185 MB",
+          "size": 187065190,
+          "size_human": "187 MB",
           "command_snippet": "RUN R -e 'renv::restore()'",
           "command_all": "RUN R -e 'renv::restore()'",
           "system_commands": [
@@ -798,35 +798,35 @@
           ],
           "comment": "buildkit.dockerfile.v0",
           "is_buildkit_instruction": true,
-          "inst_set_time_bucket": "2023-09-02T11:45:00-04:00",
+          "inst_set_time_bucket": "2023-09-11T08:45:00-04:00",
           "inst_set_time_index": 8,
           "inst_set_time_reverse_index": 1
         },
         {
           "type": "COPY",
-          "time": "2023-09-02T19:51:06Z",
+          "time": "2023-09-11T13:07:02Z",
           "is_nop": false,
           "local_image_exists": false,
           "layer_index": 0,
-          "size": 341078,
-          "size_human": "341 kB",
+          "size": 343145,
+          "size_human": "343 kB",
           "params": "MHScreener_*.tar.gz /app.tar.gz",
           "command_snippet": "COPY MHScreener_*.tar.gz /app.tar.gz",
           "command_all": "COPY MHScreener_*.tar.gz /app.tar.gz",
           "comment": "buildkit.dockerfile.v0",
           "is_buildkit_instruction": true,
-          "inst_set_time_bucket": "2023-09-02T15:45:00-04:00",
+          "inst_set_time_bucket": "2023-09-11T09:00:00-04:00",
           "inst_set_time_index": 9,
           "inst_set_time_reverse_index": 0
         },
         {
           "type": "RUN",
-          "time": "2023-09-02T19:52:41Z",
+          "time": "2023-09-11T13:10:36Z",
           "is_nop": false,
           "local_image_exists": false,
           "layer_index": 0,
-          "size": 62467930,
-          "size_human": "62 MB",
+          "size": 65000231,
+          "size_human": "65 MB",
           "command_snippet": "RUN R -e 'remotes::install_github(\"EwokOzwok...",
           "command_all": "RUN R -e 'remotes::install_github(\"EwokOzwok/MHScreener\")'",
           "system_commands": [
@@ -834,13 +834,13 @@
           ],
           "comment": "buildkit.dockerfile.v0",
           "is_buildkit_instruction": true,
-          "inst_set_time_bucket": "2023-09-02T15:45:00-04:00",
+          "inst_set_time_bucket": "2023-09-11T09:00:00-04:00",
           "inst_set_time_index": 9,
           "inst_set_time_reverse_index": 0
         },
         {
           "type": "RUN",
-          "time": "2023-09-02T19:52:42Z",
+          "time": "2023-09-11T13:10:37Z",
           "is_nop": false,
           "local_image_exists": false,
           "layer_index": 0,
@@ -852,13 +852,13 @@
           ],
           "comment": "buildkit.dockerfile.v0",
           "is_buildkit_instruction": true,
-          "inst_set_time_bucket": "2023-09-02T15:45:00-04:00",
+          "inst_set_time_bucket": "2023-09-11T09:00:00-04:00",
           "inst_set_time_index": 9,
           "inst_set_time_reverse_index": 0
         },
         {
           "type": "EXPOSE",
-          "time": "2023-09-02T19:52:42Z",
+          "time": "2023-09-11T13:10:37Z",
           "is_nop": false,
           "local_image_exists": false,
           "layer_index": 0,
@@ -868,13 +868,13 @@
           "command_all": "EXPOSE 3838/tcp",
           "comment": "buildkit.dockerfile.v0",
           "is_buildkit_instruction": true,
-          "inst_set_time_bucket": "2023-09-02T15:45:00-04:00",
+          "inst_set_time_bucket": "2023-09-11T09:00:00-04:00",
           "inst_set_time_index": 9,
           "inst_set_time_reverse_index": 0
         },
         {
           "type": "CMD",
-          "time": "2023-09-02T19:52:42Z",
+          "time": "2023-09-11T13:10:37Z",
           "is_last_instruction": true,
           "is_nop": false,
           "local_image_exists": true,
@@ -888,7 +888,7 @@
             "mhscreener:latest"
           ],
           "is_buildkit_instruction": true,
-          "inst_set_time_bucket": "2023-09-02T15:45:00-04:00",
+          "inst_set_time_bucket": "2023-09-11T09:00:00-04:00",
           "inst_set_time_index": 9,
           "inst_set_time_reverse_index": 0
         }
