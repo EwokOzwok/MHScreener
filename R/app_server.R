@@ -236,7 +236,7 @@ app_server <- function(input, output, session) {
       } else { output$ResultsInstructions1<- renderUI({}) }
 
 
-      if(PHQ9Data$Total_PHQ9 < 20 && PHQ9Data$PHQ9 == 0){
+      if(PHQ9Data$Total_PHQ9 < 27 && PHQ9Data$PHQ9 == 0){
         output$ResultsInstructions2<- renderUI({
           tagList(
             hr(),
