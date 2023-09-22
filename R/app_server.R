@@ -9,6 +9,8 @@
 #' @noRd
 app_server <- function(input, output, session) {
 
+
+
   # Your application server logic
   PHQ9Data<-data.frame(matrix(NA, nrow=1,ncol = 9))
   colnames(PHQ9Data)<-c("PHQ1","PHQ2","PHQ3","PHQ4","PHQ5","PHQ6","PHQ7","PHQ8","PHQ9")
@@ -472,6 +474,7 @@ output$DONE<- renderUI({
 observeEvent(input$Login,{
   if(input$NavPassword == "access"){
     updateF7Tabs(session = session, id = "tabs", selected = "Output_tab")
+
   } else {
     shinyalert::shinyalert(title="Wrong Password!",type="error")
   }
