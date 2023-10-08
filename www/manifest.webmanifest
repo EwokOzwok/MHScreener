@@ -9,8 +9,8 @@
   "theme_color": "#ffffff",
   "icons": [
     {
-      "src": "icons/icon-144.png",
-      "sizes": "144x144"
+      "src": "icons/apple-touch-icon.png.png",
+      "sizes": "512x512"
     }
   ],
   "shortcuts": [
