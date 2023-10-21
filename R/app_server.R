@@ -496,17 +496,17 @@ observeEvent(input$Login,{
       })
 
 
-
-
+mod_ItemCard_server(id='PHQitem1',content=c("Little interest or pleasure in doing things"),selectchoices=c("Choose a response", "Not at all","Several Days","More than half the days","Nearly every day"))
 
   output$PHQ9<-renderUI({
     tagList(
-      f7Card(
-        h4("Little interest or pleasure in doing things"),
-        f7Select("PHQitem1", NULL , choices = c("Choose a response", "Not at all","Several Days","More than half the days","Nearly every day"), selected = NULL),
-        footer = NULL,
-        hairlines = F, strong = T, inset = F, tablet = FALSE),
-        hr(),
+      mod_ItemCard_ui('PHQitem1'),
+      # f7Card(
+      #   h4("Little interest or pleasure in doing things"),
+      #   f7Select("PHQitem1", NULL , choices = c("Choose a response", "Not at all","Several Days","More than half the days","Nearly every day"), selected = NULL),
+      #   footer = NULL,
+      #   hairlines = F, strong = T, inset = F, tablet = FALSE),
+      #   hr(),
 
       f7Card(
         h4("Feeling down, depressed, or hopeless"),
