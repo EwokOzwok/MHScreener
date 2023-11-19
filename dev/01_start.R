@@ -63,6 +63,7 @@ golem::use_utils_server(with_test = TRUE)
 
 
 usethis::use_package("shinyalert")
+usethis::use_git_ignore("MHScreener/.secrets/")
 # You're now set! ----
 
 # go to dev/02_dev.R

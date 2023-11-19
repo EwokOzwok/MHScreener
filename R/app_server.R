@@ -8,6 +8,7 @@
 #' @importFrom shinyalert shinyalert
 #' @noRd
 app_server <- function(input, output, session) {
+sheet_id <- googledrive::drive_get("MHScreenerTest")$id
 
 
 
@@ -124,6 +125,11 @@ app_server <- function(input, output, session) {
       PHQ9Data<-as.data.frame(PHQ9Data)
       PHQ9Data$Total_PHQ9<-PHQ9Data$PHQ1+PHQ9Data$PHQ2+PHQ9Data$PHQ3+PHQ9Data$PHQ4+PHQ9Data$PHQ5+PHQ9Data$PHQ6+PHQ9Data$PHQ7+PHQ9Data$PHQ8+PHQ9Data$PHQ9
       print(PHQ9Data)
+
+      googlesheets4::sheet_append(data = PHQ9Data,
+                                  ss=sheet_id,
+                                  sheet="phq9")
+
       updateF7Tabs(session = session, id = "tabs", selected = "GAD7tab")
 
       if(PHQ9Data$PHQ9==0){
@@ -367,6 +373,11 @@ app_server <- function(input, output, session) {
       GAD7data<-as.data.frame(GAD7data)
       GAD7data$Total_GAD7<-GAD7data$GAD1+GAD7data$GAD2+GAD7data$GAD3+GAD7data$GAD4+GAD7data$GAD5+GAD7data$GAD6+GAD7data$GAD7
       print(GAD7data)
+
+      googlesheets4::sheet_append(data = GAD7data,
+                                  ss=sheet_id,
+                                  sheet="gad7")
+
       updateF7Tabs(session = session, id = "tabs", selected = "DoneTab")
 
       if(GAD7data$Total_GAD7 < 5){

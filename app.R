@@ -3,5 +3,12 @@
 # Or use the blue button on top of this file
 
 pkgload::load_all(export_all = FALSE,helpers = FALSE,attach_testthat = FALSE)
-options( "golem.app.prod" = TRUE)
+options("golem.app.prod" = TRUE,
+         # whenever there is one account token found, use the cached token
+         gargle_oauth_email = TRUE,
+         # specify auth tokens should be stored in a hidden directory ".secrets"
+         gargle_oauth_cache = "MHScreener/.secrets")
+
 MHScreener::run_app() # add parameters here (if any)
+
+
