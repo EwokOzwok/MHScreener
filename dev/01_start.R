@@ -48,6 +48,7 @@ usethis::use_apache_license() # You can set another license here
 
 ## Use git ----
 usethis::use_git()
+usethis::use_github()
 
 ## Init Testing Infrastructure ----
 ## Create a template for tests
@@ -68,3 +69,4 @@ usethis::use_git_ignore("MHScreener/.secrets/")
 
 # go to dev/02_dev.R
 rstudioapi::navigateToFile("dev/02_dev.R")
+
